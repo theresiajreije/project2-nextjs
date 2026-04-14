@@ -9,7 +9,7 @@ export default function Home() {
       <main className="bg-white font-sans">
         {/* Hero Section */}
         <section className="relative flex min-h-[350px] items-center justify-center overflow-hidden bg-[url('/banner2.jpg')] bg-cover bg-center bg-no-repeat px-6 text-center sm:min-h-[420px] lg:min-h-[498px]">
-          <div className="absolute inset-0 bg-[rgba(80,80,80,0.45)]" />
+<div className="absolute inset-0 bg-black/50"></div>
 
           <div className="relative z-10 text-white">
             <h1 className="mb-3 font-[Poppins] text-3xl font-semibold sm:text-4xl lg:text-[36px]">
@@ -27,28 +27,30 @@ export default function Home() {
             Check Out Our Services
           </h2>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {[1, 2, 3].map((service) => (
-              <div
-                key={service}
-                className="mx-auto w-full max-w-[378px] rounded border border-[#d9d9d9] bg-white p-5 text-center shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
-              >
-                <img
-                  src="/banner2.jpg"
-                  alt={`Service 0${service}`}
-                  className="mx-auto mb-5 h-[220px] w-full rounded object-cover sm:h-[228px]"
-                />
+          <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 gap-8 justify-items-center md:grid-cols-2 lg:grid-cols-3">
+              {[1, 2, 3].map((service) => (
+                <div
+                  key={service}
+                  className="w-full max-w-[378px] rounded border border-[#d9d9d9] bg-white p-5 text-center shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
+                >
+                  <img
+                    src="/banner2.jpg"
+                    alt={`Service 0${service}`}
+                    className="mx-auto mb-5 h-[220px] w-full rounded object-cover sm:h-[228px]"
+                  />
 
-                <h3 className="mb-2 font-[Poppins] text-xl font-semibold text-[rgb(28,33,35)] sm:text-[21px]">
-                  Service 0{service}
-                </h3>
+                  <h3 className="mb-2 font-[Poppins] text-xl font-semibold text-[rgb(28,33,35)] sm:text-[21px]">
+                    Service 0{service}
+                  </h3>
 
-                <p className="font-[Poppins] text-sm font-semibold leading-6 text-[rgb(85,85,85)] sm:text-base">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-                  corrupti aspernatur nihil, tenetur tempora labore!
-                </p>
-              </div>
-            ))}
+                  <p className="font-[Poppins] text-sm font-semibold leading-6 text-[rgb(85,85,85)] sm:text-base">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
+                    corrupti aspernatur nihil, tenetur tempora labore!
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -78,7 +80,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="mx-auto block h-[35px] w-[77px] rounded bg-[#1c2123] font-[Poppins] text-[13px] font-semibold text-white"
+                className="mx-auto block h-[35px] w-[77px] rounded bg-[#1c2123] font-[Poppins] text-[13px] font-semibold text-white cursor-pointer"
               >
                 Submit
               </button>

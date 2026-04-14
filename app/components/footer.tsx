@@ -15,9 +15,9 @@ export default function Footer() {
       <div className="mx-auto my-4 h-[2px] w-full max-w-[740px] bg-[#333]" />
 
       <div className="flex justify-center gap-5">
-        <img src="/twitter.svg" alt="twitter" className="mt-2 h-[30px] w-[30px] cursor-pointer" />
-        <img src="/facebook.svg" alt="facebook" className="mt-2 h-[30px] w-[30px] cursor-pointer" />
-        <img src="/instagram.svg" alt="instagram" className="mt-2 h-[30px] w-[30px] cursor-pointer" />
+        <img src="/twitter.svg" alt="twitter" className="mt-2 h-[30px] w-[30px] " />
+        <img src="/facebook.svg" alt="facebook" className="mt-2 h-[30px] w-[30px] " />
+        <img src="/instagram.svg" alt="instagram" className="mt-2 h-[30px] w-[30px] " />
       </div>
     </footer>
   );
