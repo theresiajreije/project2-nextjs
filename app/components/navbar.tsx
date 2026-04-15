@@ -8,33 +8,35 @@ export default function Navbar() {
   return (
     <header className="bg-white">
       <div className="mx-auto w-full max-w-[1530px] px-4 py-4 sm:px-6 lg:px-16 xl:px-24">
-        {/* Top Row */}
         <div className="flex items-center justify-between">
-          <div>
+          {/* Logo */}
+          <a href="/" className="cursor-pointer">
             <img
               src="/logo-bg.png"
               alt="Logo"
               className="h-[45px] w-auto sm:h-[55px] md:h-[70px]"
             />
-          </div>
+          </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden sm:flex items-center gap-6 md:gap-10">
+          <nav className="hidden items-center gap-6 sm:flex md:gap-10">
             <a
-              href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer md:text-base"
+              href="/"
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 md:text-base"
             >
               HOME
             </a>
+
             <a
               href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer md:text-base"
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 md:text-base"
             >
               ABOUT
             </a>
+
             <a
-              href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer md:text-base"
+              href="#contact"
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 md:text-base"
             >
               CONTACT
             </a>
@@ -44,7 +46,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col gap-1 sm:hidden cursor-pointer"
+            className="flex cursor-pointer flex-col gap-1 sm:hidden"
             aria-label="Toggle menu"
           >
             <span className="block h-[2px] w-6 bg-black"></span>
@@ -57,20 +59,25 @@ export default function Navbar() {
         {isOpen && (
           <nav className="mt-4 flex flex-col items-center gap-4 sm:hidden">
             <a
-              href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer"
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500"
             >
               HOME
             </a>
+
             <a
               href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer"
+              onClick={() => setIsOpen(false)}
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500"
             >
               ABOUT
             </a>
+
             <a
-              href="#"
-              className="font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 cursor-pointer"
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500"
             >
               CONTACT
             </a>
