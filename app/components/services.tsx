@@ -48,8 +48,8 @@ const servicesData = [
 ];
 
 export default function Services() {
-  const [selectedService, setSelectedService] = useState("All");
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("All");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const options = ["All", ...servicesData.map((service) => service.title)];
@@ -60,15 +60,13 @@ export default function Services() {
       : servicesData.filter((service) => service.title === selectedService);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent | TouchEvent) {
-      if (
-        dropdownRef.current &&
-        event.target instanceof Node &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+
+      if (dropdownRef.current && target && !dropdownRef.current.contains(target)) {
         setIsOpen(false);
       }
-    }
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
@@ -87,38 +85,38 @@ export default function Services() {
         </h2>
 
         <div className="mb-10 flex justify-center md:justify-end">
-  <div ref={dropdownRef} className="w-full max-w-[260px] md:relative">
-    <button
-      type="button"
-      onClick={() => setIsOpen(!isOpen)}
-      className="flex w-full items-center justify-between rounded-md border border-[#d9d9d9] bg-white px-4 py-3 font-[Poppins] text-base font-medium text-[#555] outline-none"
-    >
-      <span>{selectedService}</span>
-      <span className="ml-3 text-sm text-gray-500">
-  ▼
-</span>
-    </button>
-
-    {isOpen && (
-      <ul className="z-20 mt-2 max-h-60 w-full overflow-y-auto rounded-md border border-[#d9d9d9] bg-white text-left shadow-lg md:absolute md:left-0 md:top-full">
-        {options.map((option) => (
-          <li key={option}>
+          <div ref={dropdownRef} className="relative w-full max-w-[260px]">
             <button
               type="button"
-              onClick={() => {
-                setSelectedService(option);
-                setIsOpen(false);
-              }}
-              className="block w-full px-4 py-3 font-[Poppins] text-base text-[#555] hover:bg-[#f3f3f3]"
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex w-full items-center justify-between rounded-md border border-[#d9d9d9] bg-white px-4 py-3 font-[Poppins] text-base font-medium text-[#555] outline-none"
             >
-              {option}
+              <span>{selectedService}</span>
+              <span className="ml-3 text-sm text-gray-500">
+              ▼
+              </span>
             </button>
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-</div>
+
+            {isOpen && (
+              <ul className="absolute left-0 top-full z-20 mt-2 max-h-60 w-full overflow-y-auto rounded-md border border-[#d9d9d9] bg-white text-left shadow-lg">
+                {options.map((option) => (
+                  <li key={option}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedService(option);
+                        setIsOpen(false);
+                      }}
+                      className="block w-full px-4 py-3 font-[Poppins] text-base text-[#555] hover:bg-[#f3f3f3]"
+                    >
+                      {option}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredServices.map((service) => (
@@ -136,7 +134,7 @@ export default function Services() {
                 {service.title}
               </h3>
 
-              <p className="font-[Poppins] text-sm font-semibold leading-6 text-[rgb(85,85,85)] sm:text-base">
+              <p className="font-[Poppins] text-sm font-light leading-6 text-[rgb(85,85,85)] sm:text-base">
                 {service.description}
               </p>
             </div>
