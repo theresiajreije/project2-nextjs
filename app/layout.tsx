@@ -2,7 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 
 export const metadata = {
-  title: "Task 1",
+  title: "project2 nextjs",
   description: "Homepage website built with Next.js and Tailwind CSS",
 };
 

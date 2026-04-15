@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const servicesData = [
   {
@@ -49,11 +49,35 @@ const servicesData = [
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState("All");
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const options = ["All", ...servicesData.map((service) => service.title)];
 
   const filteredServices =
     selectedService === "All"
       ? servicesData
       : servicesData.filter((service) => service.title === selectedService);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
 
   return (
     <section className="bg-[#f3f3f3] px-6 pb-12 pt-8 text-center sm:px-10 lg:px-16 xl:px-24">
@@ -62,20 +86,39 @@ export default function Services() {
           Check Out Our Services
         </h2>
 
-        <div className="mb-10 flex justify-end">
-          <select
-            value={selectedService}
-            onChange={(e) => setSelectedService(e.target.value)}
-            className="w-full max-w-[260px] rounded-md border border-[#d9d9d9] bg-white px-4 py-3 font-[Poppins] text-base font-medium text-[#555] outline-none"
-          >
-            <option value="All">All</option>
-            {servicesData.map((service) => (
-              <option key={service.id} value={service.title}>
-                {service.title}
-              </option>
-            ))}
-          </select>
-        </div>
+        <div className="mb-10 flex justify-center md:justify-end">
+  <div ref={dropdownRef} className="w-full max-w-[260px] md:relative">
+    <button
+      type="button"
+      onClick={() => setIsOpen(!isOpen)}
+      className="flex w-full items-center justify-between rounded-md border border-[#d9d9d9] bg-white px-4 py-3 font-[Poppins] text-base font-medium text-[#555] outline-none"
+    >
+      <span>{selectedService}</span>
+      <span className="ml-3 text-sm text-gray-500">
+  ▼
+</span>
+    </button>
+
+    {isOpen && (
+      <ul className="z-20 mt-2 max-h-60 w-full overflow-y-auto rounded-md border border-[#d9d9d9] bg-white text-left shadow-lg md:absolute md:left-0 md:top-full">
+        {options.map((option) => (
+          <li key={option}>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedService(option);
+                setIsOpen(false);
+              }}
+              className="block w-full px-4 py-3 font-[Poppins] text-base text-[#555] hover:bg-[#f3f3f3]"
+            >
+              {option}
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</div>
 
         <div className="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredServices.map((service) => (
