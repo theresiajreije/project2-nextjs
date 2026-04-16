@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -7,32 +8,30 @@ export default function Navbar() {
 
   return (
     <header className="bg-white">
-      <div className="mx-auto w-full max-w-[1530px] px-4 py-4 sm:px-6 lg:px-16 xl:px-24">
+      <div className="mx-auto w-full max-w-[1530px] px-4 py-2 sm:px-6 lg:px-16 xl:px-24">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="cursor-pointer">
+          <Link href="/" className="cursor-pointer">
             <img
               src="/logo-bg.png"
               alt="Logo"
               className="h-[45px] w-auto sm:h-[55px] md:h-[70px]"
             />
-          </a>
+          </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden items-center gap-6 sm:flex md:gap-10">
-            <a
+            <Link
               href="/"
               className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 md:text-base"
             >
               HOME
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              href="/about"
               className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500 md:text-base"
             >
               ABOUT
-            </a>
+            </Link>
 
             <a
               href="#contact"
@@ -42,7 +41,6 @@ export default function Navbar() {
             </a>
           </nav>
 
-          {/* Mobile Burger Button */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -55,24 +53,23 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <nav className="mt-4 flex flex-col items-center gap-4 sm:hidden">
-            <a
+            <Link
               href="/"
               onClick={() => setIsOpen(false)}
               className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500"
             >
               HOME
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              href="/about"
               onClick={() => setIsOpen(false)}
               className="cursor-pointer font-[Poppins] text-sm font-semibold text-[rgb(28,33,35)] transition hover:text-gray-500"
             >
               ABOUT
-            </a>
+            </Link>
 
             <a
               href="#contact"
