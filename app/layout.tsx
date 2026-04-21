@@ -1,5 +1,8 @@
 import "./globals.css";
 import { ReactNode } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export const metadata = {
   title: "project2 nextjs",

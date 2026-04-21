@@ -12,3 +12,20 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+
+/* Arrows default */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+/* 📱 Mobile fix → push arrows to edges */
+@media (max-width: 640px) {
+  .swiper-button-prev {
+    left: 0px !important;   /* move more left */
+  }
+
+  .swiper-button-next {
+    right: 0px !important;  /* move more right */
+  }
+}
