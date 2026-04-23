@@ -41,13 +41,20 @@ body {
   right: 30px !important;
 }
 
-/* Pagination bullets  */
+/* Pagination bullets (smaller & cleaner) */
 .about-swiper .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
   background-color: white !important;
   opacity: 0.5;
 }
+
+.about-swiper .swiper-pagination-bullet-active {
+  height: 8px;
+  background-color: white !important;
+  opacity: 1;
+}
+
 
 
 /* Mobile adjustments */
