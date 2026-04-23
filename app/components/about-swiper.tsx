@@ -43,7 +43,7 @@ export default function AboutSwiper() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        className="min-h-[350px] sm:min-h-[420px] lg:min-h-[498px]"
+        className="about-swiper min-h-[350px] sm:min-h-[420px] lg:min-h-[498px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -58,7 +58,7 @@ export default function AboutSwiper() {
                   {slide.title}
                 </h1>
 
-               <p className="mx-auto max-w-lg text-sm leading-7 sm:max-w-xl sm:text-base lg:max-w-2xl lg:text-lg">
+                <p className="mx-auto max-w-lg text-sm leading-7 sm:max-w-xl sm:text-base lg:max-w-2xl lg:text-lg">
                   {slide.description}
                 </p>
               </div>

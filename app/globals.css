@@ -13,19 +13,56 @@ body {
   width: 100%;
 }
 
-/* Arrows default */
+/* Swiper navigation arrows */
 .swiper-button-next,
 .swiper-button-prev {
   color: white !important;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  background: transparent;
+  border: 2px solid white;
+
+  padding: 8px; 
+
+  top: 55%;
+  transform: translateY(-50%);
 }
 
-/* 📱 Mobile fix → push arrows to edges */
+
+/* Arrow position (better spacing) */
+.swiper-button-prev {
+  left: 30px !important;
+}
+
+.swiper-button-next {
+  right: 30px !important;
+}
+
+/* Pagination bullets  */
+.about-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: white !important;
+  opacity: 0.5;
+}
+
+
+/* Mobile adjustments */
 @media (max-width: 640px) {
+  .swiper-button-next,
   .swiper-button-prev {
-    left: 0px !important;   /* move more left */
+    width: 45px;
+    height: 45px;
+  }
+
+  .swiper-button-prev {
+    left: 15px !important;
   }
 
   .swiper-button-next {
-    right: 0px !important;  /* move more right */
+    right: 15px !important;
   }
 }
